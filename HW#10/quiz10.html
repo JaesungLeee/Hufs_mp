@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>IoT Edge Computing [201602560 Jaesung Lee] </title>
+	</head>
+	<body>
+<style>
+	img{
+		transition : transform 100ms ease-in-out, opacity 100ms ease-in-out;
+	}
+</style>		
+
+		<script src="quiz10.js"></script>
+		
+		<center><h1>IoT SMART SERVER</h></center>
+		<br><br>
+
+		<center><table border="0" cellpadding="25%" width ="100%">
+			
+		<tr>
+            <td><center>
+                <h3>Laser</h><br><br>
+                <img src="img/laser_off.png" name="LASER"><br><br>
+                <input type="button" value="ON" id="LASER_ON" onclick="LASERON();">
+                <input type="button" value="OFF" id="LASER_OFF" onclick="LASEROFF();">
+             </center></td>
+
+            <td><center>
+               <h3>UltraSonic</h><br><br>
+					<div style="width:128px; height:150px;">
+               <img src="img/ultrasonic3.png" name="US"><br><br>
+					</div>
+               <input type="button" id="US_val" value="Undetected" style="border:none;">
+            </center></td>
+
+        </tr>
+        </table></center>
+
+	</body>
+</html>
