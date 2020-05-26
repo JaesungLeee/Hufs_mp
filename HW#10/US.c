@@ -12,22 +12,20 @@ int main(void) {
     pinMode(TRIG, OUTPUT);
     pinMode(OUT, INPUT);
 
-    for(i = 0; i < 20; i++) {
-        digitalWrite(TRIG, 0);
-        usleep(2);
-        digitalWrite(TRIG, 1);
-        usleep(20);
-        digitalWrite(TRIG, 0);
+    digitalWrite(TRIG, 0);
+    usleep(2);
+    digitalWrite(TRIG, 1);
+    usleep(20);
+    digitalWrite(TRIG, 0);
 
-        while(digitalRead(OUT) == 0);
-        start = micros();
+    while(digitalRead(OUT) == 0);
+    start = micros();
+    
+    while(digitalRead(OUT) == 1);
+    travel = micros() - start;
+    dis = travel / 58;
 
-        while(digitalRead(OUT) == 1);
-        travel = micros() - start;
-        dis = travel / 58;
+    printf("%d\n", dis);
 
-        printf("%d\n", dis);
-        delay(100);
-    }
     delay(500);
 }

@@ -17,7 +17,7 @@ function XHR_read(data) {
 function repeat() {
     ultraSonic();
 }
-setInterval(function(){repeat();},500);
+setInterval(function(){repeat();});
 
 //--------------------------------------------------------//
 
@@ -39,13 +39,16 @@ document.getElementById("US_val").value=val+"cm";
 
 
 function LASERON(){
-XHR_write('LASERON');
+    var state = document.getElementById("LASER_ON").value;
 
-document.LASER.src='img/laser_on.png';
-}
-
-function LASEROFF(){
-XHR_write('LASEROFF');
-
-document.LASER.src='img/laser_off.png';
+    if (state = "ON") {
+        XHR_write('LASERON');
+        document.LASER.src='img/laser_on.png';
+        state = "OFF"
+    }
+    else {
+        XHR_write('LASEROFF');
+        document.LASER.src='img/laser_off.png';
+        state = "ON"
+    }
 }
