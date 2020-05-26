@@ -42,13 +42,17 @@ function LASERON(){
     var state = document.getElementById("LASER_ON").value;
 
     if (state = "ON") {
+        
         XHR_write('LASERON');
         document.LASER.src='img/laser_on.png';
+        // document.getElementById("LASER_ON").value = "OFF"
         state = "OFF"
     }
     else {
+        
         XHR_write('LASEROFF');
         document.LASER.src='img/laser_off.png';
         state = "ON"
+        // document.getElementById("LASER_ON").value = "ON"
     }
 }
