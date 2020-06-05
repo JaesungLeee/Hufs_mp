@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask-WebSocket Sensor Control</title>
+</head>
+<body>
+<!--=================================================================-->
+<!--				DISPLAYS										 -->
+<!--=================================================================-->
+<script>
+display_log=function(msg)
+{
+	  var logArea = 0;		
+	  
+	  if(!logArea)
+	  { logArea=document.getElementById("log"); }
+	  if(msg==null)
+	  { logArea.textContent='';}
+	  else { logArea.textContent=msg+'\n'+logArea.textContent; }
+};
+</script> 
+<script src="gauge.js"></script>
+<!--=================================================================-->
+<!--				WEBSOCKET SCRIPT								 -->
+<!--=================================================================-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+	    
+    socket.on('connect', function() {
+        console.log('Websocket connected!');
+    });
+	    
+    
+    socket.on('mess_from_server', function(msg) {
+        console.log(msg);
+        display_log("poten = "+msg.potentiometer + " temp = "+msg.temperature) ;
+		var gauge=new Gauge('gauge'); 
+        gauge.draw(msg.potentiometer);
+       });
+	
+    function start() {
+      console.log('start...');
+      nbr_meas = document.getElementById("nbr_meas");
+      socket.emit('create', {iterations:  parseInt(nbr_meas.value)});
+    }
+</script>
+<!--=================================================================-->
+<!--				AJAX REQUEST FOR LED CONTROL					 -->
+<!--=================================================================--> 
+<script>
+	function do_onclick(led, label)
+	{
+		  var xmlhttp=new XMLHttpRequest();
+		  
+		  xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			  label.innerHTML=xmlhttp.responseText;
+			}
+		  }
+		  
+		  xmlhttp.open("GET","led1/"+led.checked,true)
+		  xmlhttp.send();
+	}
+</script>	
+<!--=================================================================-->
+<!--				INIT					 						 -->
+<!--=================================================================--> 
+<script>
+	window.onload = function() {
+			var led=document.getElementById("tLed");
+			var label=document.getElementById("tLedLabel");
+			led.checked=false;
+			do_onclick(led, label);
+	};
+</script>
+<!--=================================================================-->
+<!--				HTML											 -->
+<!--=================================================================-->
+
+<p>[<a href="/">home</a>]</p>
+<hr>
+<h2>Control LED1</h2>
+
+<table>
+	<tr>
+	<td > 
+		Control led1 <input type="checkbox" id="tLed" onclick="do_onclick(this, document.getElementById('tLedLabel'))">
+	</td>
+	<td>	
+		<span id="tLedLabel"> GPIO2 led turned off</span>		
+	</td>
+	</tr>
+</table>
+<hr>
+
+<h2>Get Measured data through Websocket</h2>  
+<table>
+	<tr>
+	<td > 
+			<strong> Number of Measurements :  </strong><br/>   
+			<input type="text" id="nbr_meas"/>     <br/>   
+			<button onclick="start()">Start</button>
+	</td>	
+	<td>	
+			<h3> Potentiometer Measurement</h3>
+			<div >
+			<canvas id="gauge" width="170" height="170"></canvas>
+			</div>			
+	</td>
+	</tr>
+</table>
+
+<p><b>Log:</b></p>
+<p></p><pre id="log"></pre><p></p>	
+
+<hr> <!---------------------------------------------------------------->
+  
+</body>
+</html>
+<!--=================================================================-->

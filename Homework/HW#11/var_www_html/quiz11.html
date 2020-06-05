@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>IoT SMART SERVER</title>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	</head>
+	<body>
+<style>
+	img{
+		transition : transform 100ms ease-in-out, opacity 100ms ease-in-out;
+	}
+</style>		
+		<center><h1>IoT SMART SERVER</h></center>
+		<br><br>
+		<center><table border="0" cellPadding="0%" width="100%">
+	<tr>
+            <td><center>
+               <h3>Light Sensor</h><br><br>
+               <img src="img/light_on.png" name="LIGHT"><br><br>
+               <input type="button" value="Get Status" id="GET_LIGHT">
+               <br> <div id="lightGraph"></div> 
+            </center></td>
+
+            <td width="50%"><center>
+                <h3>Sound Sensor</h><br><br>
+               <img src="img/sound.png" name="LIGHT"><br><br>
+               <input type="button" value="Get Status" id="GET_SOUND">
+               <br> <div id="soundGraph"></div> 
+            </center></td>                        
+          </tr>
+          <tr>
+            <td><center>               
+               <h3>Touch Sensor</h><br><br>
+               <img src="img/touch_off.png" name="TOUCH"><br><br>
+               <input type="button" value="Get Alert" id="GET_TOUCH">
+            </center></td>
+            <td width="50%"><center>
+               <h3>Switch Sensor</h><br><br>
+               <img src="img/sw_off.png" name="SWITCH"><br><br>
+               <input type="button" value="Get Alert" id="GET_SWITCH">
+            </center></td>
+          </tr>
+		</table></center>
+	</body>
+	<script src="iot_quiz11.js"></script>
+</html>
