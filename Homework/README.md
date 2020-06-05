@@ -19,3 +19,18 @@
 * Lazer 상태 이미지는 처음에 꺼진 이미지 였다가, Lazer가 켜지면 Lazer가 켜진 이미지로, 꺼지면 꺼진 이미지로 바뀐다 (Javascript, HTML).
 * Ultrasonic 상태 이미지는 측정한 거리 값(cm)이 20cm이상이면 3번 이미지로, 10cm 이상~20cm 미만이면 2번 이미지, 10cm 미만이면 1번 이미지로 바뀐다 (Javascript)
 * Ultrasonic 센싱은 0.5초 간격으로 주기적으로 한다 (Javascript, XHR, PHP, C executable).
+<br>
+
+## Quiz 11
+* 참조:  ksaehwa_jQueryAjaxPlotlyEx.zip
+  - Web Push (Alert) with jQuery Ajax
+* Touch 센서 구현을 참조하여 switch 센서 alert를 구현(Jquery Ajax 이용)한다.
+* 소스 코드 확장자 이름이 제대로 되어 있어야 함. 
+
+   - quiz11.html
+
+   - iot_quiz11.js
+
+   - remote_con_quiz11.php
+
+   - switch_alert_php.c
