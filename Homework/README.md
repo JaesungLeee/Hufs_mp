@@ -4,6 +4,13 @@
 > Edge Computing과 IoT Smart Server를 다룹니다. <br>
 
 <br>
+## Quiz 1
+* Touch 센서가 눌릴 때 "Pressed"라고 출력하고, Led 3번을 0.5초동안 키고 0.5초 동안 끄는 것을 3번 반복한다. 
+* --> led 3번을 키는 것은 실제 물리적인 핀 선 연결을 통해서 이루어지는 것임 (SW적인 게 아님) 
+* 센서는 0.1초 간격으로 주기적으로 읽는다. --> Polling
+* 센서가 눌릴 때만 "Pressed"라고 출력한다. --> prev_state 변수 필요
+* 주기적으로 계속 센서의 상태를 출력하는 것이 아니다. 
+<br>
 
 ## Quiz 4
 * Polling 방식으로 Switch Sensor를 0.1초 간격으로 센싱하여 Switch Sensor가 눌리면 "Pressed.\n"를 출력하고, Buzzer를 1초 동안 울린다. (Pressed는 눌릴 때만 출력한다)
