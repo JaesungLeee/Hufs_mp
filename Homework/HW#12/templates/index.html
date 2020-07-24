@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Flask-WebSocket Sensor Control</title>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script> 
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>  
+    <script src="iot_with_flask.js"> </script>
+  </head>
+
+  <body>
+    <h2>Get Measured data through Websocket</h2>  
+    <strong> Number of Measurements:  </strong>
+    <br/>   
+    <input type="text" id="measurementCnt"/>     
+    <br/>   
+    
+    <button onclick="measurement_start()">Start</button>
+    
+    <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div> 
+    <p><b>Log:</b></p>
+    <p></p><pre id="log"></pre><p></p>	
+    <hr> 
+  </body>
+</html>
